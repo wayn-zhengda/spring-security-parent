@@ -1,0 +1,17 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.wayn.core.properties.WaynSecurityProperties",
+      "name": "wayn.security",
+      "type": "com.wayn.core.properties.WaynSecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.wayn.core.properties.WaynSecurityProperties",
+      "name": "wayn.security.browser",
+      "type": "com.wayn.core.properties.BrowserProperties"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+com\wayn\config\MySecurityConfig.class
+com\wayn\SpringSecurityWebApplication.class
+com\wayn\config\MyUserDetailService.class
+com\wayn\controller\TestController.class
