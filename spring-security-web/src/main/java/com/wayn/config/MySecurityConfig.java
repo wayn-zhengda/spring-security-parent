@@ -27,7 +27,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
             .loginProcessingUrl("/form/login")
             .and()
             .authorizeRequests()
-            .antMatchers("/html/*", "/require/auth", securityProperties.getBrowser().getSignPage())
+            .antMatchers("/html/*", "/require/auth", securityProperties.getBrowser().getSignPage(), "/code/image")
             .permitAll()
             .anyRequest()
             .authenticated().and().csrf().disable();

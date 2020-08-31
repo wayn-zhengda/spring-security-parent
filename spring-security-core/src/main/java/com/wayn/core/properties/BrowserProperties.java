@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class BrowserProperties {
 
-    private String signPage = "sign.html";
+    private String signPage = "/html/sign.html";
 }

@@ -1,6 +1,7 @@
 package com.wayn.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +18,9 @@ public class TestController {
     @RequestMapping("/user")
     public Object currentUserInfo(@AuthenticationPrincipal UserDetails userDetails){
         return userDetails;
+    }
+    @RequestMapping("/user2")
+    public Object currentUserInfo(){
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 }
