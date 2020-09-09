@@ -2,6 +2,7 @@ package com.wayn.controller;
 
 
 import com.wayn.core.common.R;
+import com.wayn.core.constant.ValidateCodeConstant;
 import com.wayn.core.properties.WaynSecurityProperties;
 import com.wayn.core.validate.code.image.ImageCode;
 import com.wayn.core.validate.code.image.ImageCodeGenerator;
@@ -34,7 +35,6 @@ public class BrowserAuthController {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    private final static String IMAGE_SESSION_KEY = "IMAGE_SESSION_KEY";
 
     @Autowired
     private WaynSecurityProperties waynSecurityProperties;
@@ -62,7 +62,7 @@ public class BrowserAuthController {
     public void imgCode(ServletWebRequest request, HttpServletResponse response, HttpSession session){
         ImageCodeGenerator imageCodeGenerator = new ImageCodeGenerator();
         ImageCode imageCode = imageCodeGenerator.generate(request);
-        session.setAttribute(IMAGE_SESSION_KEY, imageCode);
+        session.setAttribute(ValidateCodeConstant.IMAGE_SESSION_KEY, imageCode);
         try {
             ImageIO.write(imageCode.getBufferedImage(), "jpeg", response.getOutputStream());
         } catch (IOException e) {
