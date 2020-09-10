@@ -1,3 +1,4 @@
 1.生成验证码
 2.验证码写入session
 3.验证码返回前端
+4.登陆时验证图片验证码,注意将filter加在AbstractPreAuthenticatedProcessingFilter之前
