@@ -1,0 +1,11 @@
+/spring-security-web/target/classes/application.properties
+/.idea/*
+/spring-security-core/target/*
+*.iml
+/spring-security-web/target/classes/com/wayn/config/MySecurityConfig.class
+spring-security-browser/target/
+spring-security-web/target/classes/com/wayn/SpringSecurityWebApplication.class
+spring-security-web/target/classes/com/wayn/config/MyUserDetailService.class
+spring-security-web/target/classes/com/wayn/controller/
+spring-security-web/target/classes/resources/
+spring-security-web/target/generated-sources/
