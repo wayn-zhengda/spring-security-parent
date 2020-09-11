@@ -1,6 +1,7 @@
 package com.wayn.core.filter;
 
 import com.wayn.core.constant.ValidateCodeConstant;
+import com.wayn.core.exception.ValidataCodeException;
 import com.wayn.core.validate.code.image.ImageCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -26,7 +27,11 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         if (StringUtils.equals("/form/login", request.getRequestURI()) && StringUtils.endsWithIgnoreCase(request.getMethod(), "post")){
             log.info("执行验证码校验");
-            boolean b = validateCode(new ServletWebRequest(request));
+            try {
+                validateCode(new ServletWebRequest(request));
+            }catch (ValidataCodeException e){
+                log.error("验证码错误, {}", request.getRequestURL());
+            }
         }
         filterChain.doFilter(request, response);
     }
@@ -34,6 +39,9 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     private boolean validateCode(ServletWebRequest servletWebRequest) {
         ImageCode imageCode = (ImageCode) sessionStrategy.getAttribute(servletWebRequest, ValidateCodeConstant.IMAGE_SESSION_KEY);
         String matchCode = (String) servletWebRequest.getAttribute("code", 0);
-        return imageCode.getCode().equals(matchCode);
+        if (imageCode.getCode().equals(matchCode)){
+            throw new ValidataCodeException("验证码错误");
+        }
+        return true;
     }
 }
